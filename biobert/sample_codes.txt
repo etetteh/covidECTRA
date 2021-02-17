@@ -1,0 +1,160 @@
+                       #############################################################################
+                       ######################## Named Entity Recognition ###########################
+                       #############################################################################
+                       
+############################################### covibert-Small #########################################################
+########### BC5C  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covibert_small/ckpt-1.5M/vocab.txt --bert_config_file=covibert_small/ckpt-1.5M/bert_config.json --init_checkpoint=covibert_small/ckpt-1.5M/model.ckpt-1500000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_bc5c --output_dir=covibert_small/ckpt-1.5M/results/bc5c
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covibert_small/ckpt-1M/results/bc5c/token_test.txt --label_test_path=covibert_small/ckpt-1.5M/results/bc5c/label_test.txt --answer_path=finetuning_data/bert_bc5c/test.tsv --output_dir=covibert_small/ckpt-1.5M/results/bc5c
+
+perl biobert/biocodes/conlleval.pl < covibert_small/ckpt-1.5M/results/bc5c/NER_result_conll.txt
+
+
+########### BC5D ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covibert_small/ckpt-1.5M/vocab.txt --bert_config_file=covibert_small/ckpt-1.5M/bert_config.json --init_checkpoint=covibert_small/ckpt-1.5M/model.ckpt-1500000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_bc5d --output_dir=covibert_small/ckpt-1.5M/results/bc5d
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covibert_small/ckpt-1M/results/bc5d/token_test.txt --label_test_path=covibert_small/ckpt-1.5M/results/bc5d/label_test.txt --answer_path=finetuning_data/bert_bc5d/test.tsv --output_dir=covibert_small/ckpt-1.5M/results/bc5d
+
+perl biobert/biocodes/conlleval.pl < covibert_small/ckpt-1.5M/results/bc5d/NER_result_conll.txt
+
+
+########### JNLPBA ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covibert_small/ckpt-1.5M/vocab.txt --bert_config_file=covibert_small/ckpt-1.5M/bert_config.json --init_checkpoint=covibert_small/ckpt-1.5M/model.ckpt-1500000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_jnlpba --output_dir=covibert_small/ckpt-1.5M/results/jnlpba
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covibert_small/ckpt-1M/results/jnlpba/token_test.txt --label_test_path=covibert_small/ckpt-1.5M/results/jnlpba/label_test.txt --answer_path=finetuning_data/bert_jnlpba/test.tsv --output_dir=covibert_small/ckpt-1.5M/results/jnlpba
+
+perl biobert/biocodes/conlleval.pl < covibert_small/ckpt-1.5M/results/jnlpba/NER_result_conll.txt
+
+
+########### NCBI ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covibert_small/ckpt-1.5M/vocab.txt --bert_config_file=covibert_small/ckpt-1.5M/bert_config.json --init_checkpoint=covibert_small/ckpt-1.5M/model.ckpt-1500000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_ncbi --output_dir=covibert_small/ckpt-1.5M/results/ncbi
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covibert_small/ckpt-1M/results/ncbi/token_test.txt --label_test_path=covibert_small/ckpt-1.5M/results/ncbi/label_test.txt --answer_path=finetuning_data/bert_ncbi/test.tsv --output_dir=covibert_small/ckpt-1.5M/results/ncbi
+
+perl biobert/biocodes/conlleval.pl < covibert_small/ckpt-1.5M/results/ncbi/NER_result_conll.txt
+
+
+########### BC2GM  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covibert_small/ckpt-1.5M/vocab.txt --bert_config_file=covibert_small/ckpt-1.5M/bert_config.json --init_checkpoint=covibert_small/ckpt-1.5M/model.ckpt-1500000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_bc2gm --output_dir=covibert_small/ckpt-1.5M/results/bc2gm
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covibert_small/ckpt-1M/results/bc2gm/token_test.txt --label_test_path=covibert_small/ckpt-1.5M/results/bc2gm/label_test.txt --answer_path=finetuning_data/bert_bc2gm/test.tsv --output_dir=covibert_small/ckpt-1.5M/results/bc2gm
+
+perl biobert/biocodes/conlleval.pl < covibert_small/ckpt-1.5M/results/bc2gm/NER_result_conll.txt
+
+############################################### covidECTRA-Small #########################################################        
+########### BC5C  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covidectra_small/ckpt-1M/vocab.txt --bert_config_file=covidectra_small/ckpt-1M/electra_config.json --init_checkpoint=covidectra_small/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_bc5c --output_dir=covidectra_small/ckpt-1M/results/bc5c
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_small/ckpt-1M/results/bc5c/token_test.txt --label_test_path=covidectra_small/ckpt-1M/results/bc5c/label_test.txt --answer_path=finetuning_data/bert_bc5c/test.tsv --output_dir=covidectra_small/ckpt-1M/results/bc5c
+
+perl biobert/biocodes/conlleval.pl < covidectra_small/ckpt-1M/results/bc5c/NER_result_conll.txt
+
+
+########### BC5D ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covidectra_small/ckpt-1M/vocab.txt --bert_config_file=covidectra_small/ckpt-1M/electra_config.json --init_checkpoint=covidectra_small/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_bc5d --output_dir=covidectra_small/ckpt-1M/results/bc5d
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_small/ckpt-1M/results/bc5d/token_test.txt --label_test_path=covidectra_small/ckpt-1M/results/bc5d/label_test.txt --answer_path=finetuning_data/bert_bc5d/test.tsv --output_dir=covidectra_small/ckpt-1M/results/bc5d
+
+perl biobert/biocodes/conlleval.pl < covidectra_small/ckpt-1M/results/bc5d/NER_result_conll.txt
+
+
+########### JNLPBA ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covidectra_small/ckpt-1M/vocab.txt --bert_config_file=covidectra_small/ckpt-1M/electra_config.json --init_checkpoint=covidectra_small/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_jnlpba --output_dir=covidectra_small/ckpt-1M/results/jnlpba
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_small/ckpt-1M/results/jnlpba/token_test.txt --label_test_path=covidectra_small/ckpt-1M/results/jnlpba/label_test.txt --answer_path=finetuning_data/bert_jnlpba/test.tsv --output_dir=covidectra_small/ckpt-1M/results/jnlpba
+
+perl biobert/biocodes/conlleval.pl < covidectra_small/ckpt-1M/results/jnlpba/NER_result_conll.txt
+
+
+########### NCBI ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covidectra_small/ckpt-1M/vocab.txt --bert_config_file=covidectra_small/ckpt-1M/electra_config.json --init_checkpoint=covidectra_small/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_ncbi --output_dir=covidectra_small/ckpt-1M/results/ncbi
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_small/ckpt-1M/results/ncbi/token_test.txt --label_test_path=covidectra_small/ckpt-1M/results/ncbi/label_test.txt --answer_path=finetuning_data/bert_ncbi/test.tsv --output_dir=covidectra_small/ckpt-1M/results/ncbi
+
+perl biobert/biocodes/conlleval.pl < covidectra_small/ckpt-1M/results/ncbi/NER_result_conll.txt
+
+
+########### BC2GM  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=384  --vocab_file=covidectra_small/ckpt-1M/vocab.txt --bert_config_file=covidectra_small/ckpt-1M/electra_config.json --init_checkpoint=covidectra_small/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_bc2gm --output_dir=covidectra_small/ckpt-1M/results/bc2gm
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_small/ckpt-1M/results/bc2gm/token_test.txt --label_test_path=covidectra_small/ckpt-1M/results/bc2gm/label_test.txt --answer_path=finetuning_data/bert_bc2gm/test.tsv --output_dir=covidectra_small/ckpt-1M/results/bc2gm
+
+perl biobert/biocodes/conlleval.pl < covidectra_small/ckpt-1M/results/bc2gm/NER_result_conll.txt
+
+
+#################################################### covidECTRA-Base ##########################################################             
+########### BC5C  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=512  --vocab_file=covidectra_base/ckpt-1M/vocab.txt --bert_config_file=covidectra_base/ckpt-1M/electra_config.json --init_checkpoint=covidectra_base/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_bc5c --output_dir=covidectra_base/ckpt-1M/results/bc5c
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_base/ckpt-1M/results/bc5c/token_test.txt --label_test_path=covidectra_base/ckpt-1M/results/bc5c/label_test.txt --answer_path=finetuning_data/bert_bc5c/test.tsv --output_dir=covidectra_base/ckpt-1M/results/bc5c
+
+perl biobert/biocodes/conlleval.pl < covidectra_base/ckpt-1M/results/bc5c/NER_result_conll.txt
+
+
+########### BC5D ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=512  --vocab_file=covidectra_base/ckpt-1M/vocab.txt --bert_config_file=covidectra_base/ckpt-1M/electra_config.json --init_checkpoint=covidectra_base/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_bc5d --output_dir=covidectra_base/ckpt-1M/results/bc5d
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_base/ckpt-1M/results/bc5d/token_test.txt --label_test_path=covidectra_base/ckpt-1M/results/bc5d/label_test.txt --answer_path=finetuning_data/bert_bc5d/test.tsv --output_dir=covidectra_base/ckpt-1M/results/bc5d
+
+perl biobert/biocodes/conlleval.pl < covidectra_base/ckpt-1M/results/bc5d/NER_result_conll.txt
+
+
+########### JNLPBA ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=512  --vocab_file=covidectra_base/ckpt-1M/vocab.txt --bert_config_file=covidectra_base/ckpt-1M/electra_config.json --init_checkpoint=covidectra_base/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_jnlpba --output_dir=covidectra_base/ckpt-1M/results/jnlpba
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_base/ckpt-1M/results/jnlpba/token_test.txt --label_test_path=covidectra_base/ckpt-1M/results/jnlpba/label_test.txt --answer_path=finetuning_data/bert_jnlpba/test.tsv --output_dir=covidectra_base/ckpt-1M/results/jnlpba
+
+perl biobert/biocodes/conlleval.pl < covidectra_base/ckpt-1M/results/jnlpba/NER_result_conll.txt
+
+
+########### NCBI ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=512  --vocab_file=covidectra_base/ckpt-1M/vocab.txt --bert_config_file=covidectra_base/ckpt-1M/electra_config.json --init_checkpoint=covidectra_base/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_ncbi --output_dir=covidectra_base/ckpt-1M/results/ncbi
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_base/ckpt-1M/results/ncbi/token_test.txt --label_test_path=covidectra_base/ckpt-1M/results/ncbi/label_test.txt --answer_path=finetuning_data/bert_ncbi/test.tsv --output_dir=covidectra_base/ckpt-1M/results/ncbi
+
+perl biobert/biocodes/conlleval.pl < covidectra_base/ckpt-1M/results/ncbi/NER_result_conll.txt
+
+
+########### BC2GM  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=True --max_seq_length=512  --vocab_file=covidectra_base/ckpt-1M/vocab.txt --bert_config_file=covidectra_base/ckpt-1M/electra_config.json --init_checkpoint=covidectra_base/ckpt-1M/electra_model.ckpt-1000000 --num_train_epochs=3.0 --learning rate=1e-4 --data_dir=finetuning_data/bert_bc2gm --output_dir=covidectra_base/ckpt-1M/results/bc2gm
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=covidectra_base/ckpt-1M/results/bc2gm/token_test.txt --label_test_path=covidectra_base/ckpt-1M/results/bc2gm/label_test.txt --answer_path=finetuning_data/bert_bc2gm/test.tsv --output_dir=covidectra_base/ckpt-1M/results/bc2gm
+
+perl biobert/biocodes/conlleval.pl < covidectra_base/ckpt-1M/results/bc2gm/NER_result_conll.txt
+
+                         #################################################################
+                         ###################### Relation Extraction ######################
+                         #################################################################
+                         
+################################################# covibert #######################################################
+########## GAD ############
+python3 run_re.py --task_name="gad" --do_train=true --do_eval=true --do_predict=true --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=bert_small/bert_config.json --init_checkpoint=gs://covidectrap/models/covibert/model.ckpt-1500000 --max_seq_length=128 --train_batch_size=32 --eval_batch_size=32 --predict_batch_size=32 --learning_rate=5e-4 --num_train_epochs=20.0 --do_lower_case=True --data_dir=gs://covidectrap/finetuning_data/gad --output_dir=gs://covidectrap/models/covibert/results/gad
+
+########### DDI ###########
+python3 run_re.py --task_name="ddi" --do_train=true --do_eval=true --do_predict=true --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=bert_small/bert_config.json --init_checkpoint=gs://covidectrap/models/covibert/model.ckpt-1500000 --max_seq_length=128 --train_batch_size=32 --eval_batch_size=32 --predict_batch_size=32 --learning_rate=5e-4 --num_train_epochs=30.0 --do_lower_case=True --data_dir=gs://covidectrap/finetuning_data/ddi --output_dir=gs://covidectrap/models/covibert/results/ddi
+
+########## CHEMPROT #######
+python3 run_re.py --task_name="chemprot" --do_train=true --do_eval=true --do_predict=true --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=bert_small/bert_config.json --init_checkpoint=gs://covidectrap/models/covibert/model.ckpt-1500000 --max_seq_length=128 --train_batch_size=32 --eval_batch_size=32 --predict_batch_size=32 --learning_rate=5e-4 --num_train_epochs=30.0 --do_lower_case=True --data_dir=gs://covidectrap/finetuning_data/chemprot --output_dir=gs://covidectrap/models/covibert/results/chemprot
+
+
+################################################# covidECTRA-Small ###################################################
+########## GAD ############
+python3 electra/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Small" --hparams '{"model_size": "small", "task_names": ["gad"], "num_train_epochs": 15.0, "train_batch_size": 32, "eval_batch_size": 8, "predict_batch_size": 8}'
+
+########### DDI ###########
+python3 electra/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Small" --hparams '{"model_size": "small", "task_names": ["ddi"]}'
+
+########## CHEMPROT #######
+python3 electra/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Small" --hparams '{"model_size": "small", "task_names": ["chemprot"]}'
+
+
+################################################# covidECTRA-Base ###################################################
+########## GAD ############
+python3 b_electra/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Base" --hparams '{"model_size": "base", "task_names": ["gad"], "num_train_epochs": 15.0, "train_batch_size": 32, "eval_batch_size": 8, "predict_batch_size": 8}'
+
+########### DDI ###########
+python3 b_electra/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Base" --hparams '{"model_size": "base", "task_names": ["ddi"]}'
+
+########## CHEMPROT #######
+python3 b_electra/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Base" --hparams '{"model_size": "base", "task_names": ["chemprot"]}'

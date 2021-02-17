@@ -1,0 +1,265 @@
+                       #############################################################################
+                       ######################## Named Entity Recognition ###########################
+                       #############################################################################
+                       
+############################################### coviBERT#########################################################
+
+##############################
+########### BC5C  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_bc5c --output_dir=gs://covidectrap/models/coviBERT/results/bc5c
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/coviBERT/results/bc5c/token_test.txt --label_test_path=gs://covidectrap/models/coviBERT/results/bc5c/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_bc5c/test.tsv --output_dir=gs://covidectrap/models/coviBERT/results/bc5c
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/coviBERT/results/bc5c/NER_result_conll.txt
+
+##############################
+########### BC5D  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_bc5d --output_dir=gs://covidectrap/models/coviBERT/results/bc5d
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/coviBERT/results/bc5d/token_test.txt --label_test_path=gs://covidectrap/models/coviBERT/results/bc5d/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_bc5d/test.tsv --output_dir=gs://covidectrap/models/coviBERT/results/bc5d
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covibert/results/bc5d/NER_result_conll.txt
+
+##############################
+########### JNLPBA  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_jnlpba --output_dir=gs://covidectrap/models/coviBERT/results/jnlpba
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/coviBERT/results/jnlpba/token_test.txt --label_test_path=gs://covidectrap/models/coviBERT/results/jnlpba/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_jnlpba/test.tsv --output_dir=gs://covidectrap/models/coviBERT/results/jnlpba
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/coviBERT/results/jnlpba/NER_result_conll.txt
+
+##############################
+########### NCBI  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_ncbi --output_dir=gs://covidectrap/models/coviBERT/results/ncbi
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/coviBERT/results/ncbi/token_test.txt --label_test_path=gs://covidectrap/models/coviBERT/results/ncbi/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_ncbi/test.tsv --output_dir=gs://covidectrap/models/coviBERT/results/ncbi
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/coviBERT/results/ncbi/NER_result_conll.txt
+
+##############################
+########### BC2GM  ############
+python3 biobert/run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_bc2gm --output_dir=gs://covidectrap/models/coviBERT/results/bc2gm
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/coviBERT/results/bc2gm/token_test.txt --label_test_path=gs://covidectrap/models/coviBERT/results/bc2gm/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_bc2gm/test.tsv --output_dir=gs://covidectrap/models/coviBERT/results/bc2gm
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/coviBERT/results/bc2gm/NER_result_conll.txt
+
+##########################################################################################################################
+################################################# covidECTRA-Small #######################################################
+
+##############################
+########### BC5C  ############
+python3 biobert/electra_run_ner.py ----do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Small/electra_small_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Small/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_bc5c --output_dir=gs://covidectrap/models/covidECTRA-Small/results/bc5c
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Small/results/bc5c/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Small/results/bc5c/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_bc5c/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Small/results/bc5c
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Small/results/bc5c/NER_result_conll.txt
+
+#############################
+########### BC5D ############
+python3 biobert/electra_run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Small/electra_small_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Small/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_bc5d --output_dir=gs://covidectrap/models/covidECTRA-Small/results/bc5d
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Small/results/bc5d/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Small/results/bc5d/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_bc5d/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Small/results/bc5d
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Small/results/bc5d/NER_result_conll.txt
+
+###############################
+########### JNLPBA ############
+python3 biobert/electra_run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Small/electra_small_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Small/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_jnlpba --output_dir=gs://covidectrap/models/covidECTRA-Small/results/jnlpba
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Small/results/jnlpba/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Small/results/jnlpba/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_jnlpba/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Small/results/jnlpba
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Small/results/jnlpba/NER_result_conll.txt
+
+#############################
+########### NCBI ############
+python3 biobert/electra_run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Small/electra_small_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Small/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_ncbi --output_dir=gs://covidectrap/models/covidECTRA-Small/results/ncbi
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Small/results/ncbi/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Small/results/ncbi/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_ncbi/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Small/results/ncbi
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Small/results/ncbi/NER_result_conll.txt
+
+###############################
+########### BC2GM  ############
+python3 biobert/electra_run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=384  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Small/electra_small_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Small/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_bc2gm --output_dir=gs://covidectrap/models/covidECTRA-Small/results/bc2gm
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Small/results/bc2gm/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Small/results/bc2gm/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_bc2gm/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Small/results/bc2gm
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Small/results/bc2gm/NER_result_conll.txt
+
+#########################################################################################################################
+################################################# covidECTRA-Base #######################################################       
+
+##############################
+########### BC5C  ############
+python3 biobert/electra_run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=512  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Base/electra_base_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Base/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_bc5c--output_dir=gs://covidectrap/models/covidECTRA-Base/results/bc5c
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Base/results/bc5c/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Base/results/bc5c/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_bc5c/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Base/results/bc5c
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Base/results/bc5c/NER_result_conll.txt
+
+#############################
+########### BC5D ############
+python3 biobert/electra_run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=512  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Base/electra_base_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Base/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_bc5d --output_dir=gs://covidectrap/models/covidECTRA-Base/results/bc5d
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Base/results/bc5d/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Base/results/bc5d/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_bc5d/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Base/results/bc5d
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Base/results/bc5d/NER_result_conll.txt
+
+###############################
+########### JNLPBA ############
+python3 biobert/electra_run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=512  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Base/electra_base_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Base/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_jnlpba --output_dir=gs://covidectrap/models/covidECTRA-Base/results/jnlpba
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Base/results/jnlpba/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Base/results/jnlpba/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_jnlpba/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Base/results/jnlpba
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Base/results/jnlpba/NER_result_conll.txt
+
+#############################
+########### NCBI ############
+python3 biobert/electra_run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=512  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Base/electra_base_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Base/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_ncbi --output_dir=gs://covidectrap/models/covidECTRA-Base/results/ncbi
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Base/results/ncbi/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Base/results/ncbi/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_ncbi/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Base/results/ncbi
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Base/results/ncbi/NER_result_conll.txt
+
+###############################
+########### BC2GM  ############
+python3 biobert/electra_run_ner.py --do_train=true --do_eval=true --do_predict=true --max_seq_length=512  --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Base/electra_base_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Base/model.ckpt-1000000 --num_train_epochs=60.0 --learning rate=1e-4 --data_dir=gs://covidectrap/finetuning_data/bert_bc2gm --output_dir=gs://covidectrap/models/covidECTRA-Base/results/bc2gm
+
+python3 biobert/biocodes/ner_detokenize.py --token_test_path=gs://covidectrap/models/covidECTRA-Base/results/bc2gm/token_test.txt --label_test_path=gs://covidectrap/models/covidECTRA-Base/results/bc2gm/label_test.txt --answer_path=gs://covidectrap/finetuning_data/bert_bc2gm/test.tsv --output_dir=gs://covidectrap/models/covidECTRA-Base/results/bc2gm
+
+perl biobert/biocodes/conlleval.pl < gs://covidectrap/models/covidECTRA-Base/results/bc2gm/NER_result_conll.txt
+
+
+                         #################################################################
+                         ###################### Relation Extraction ######################
+                         #################################################################
+                         
+################################################# coviBERT #######################################################
+########## GAD ############
+python3 biobert/run_re.py --task_name="gad" --do_train=true --do_eval=true --do_predict=true --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --max_seq_length=128 --train_batch_size=32 --eval_batch_size=32 --predict_batch_size=32 --learning_rate=5e-4 --num_train_epochs=15.0 --do_lower_case=True --data_dir=gs://covidectrap/finetuning_data/gad --output_dir=gs://covidectrap/models/coviBERT/results/gad
+
+########### DDI ###########
+python3 biobert/run_re.py --task_name="ddi" --do_train=true --do_eval=true --do_predict=true --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --max_seq_length=128 --train_batch_size=32 --eval_batch_size=32 --predict_batch_size=32 --learning_rate=5e-4 --num_train_epochs=30.0 --do_lower_case=True --data_dir=gs://covidectrap/finetuning_data/ddi --output_dir=gs://covidectrap/models/coviBERT/results/ddi
+
+########## CHEMPROT #######
+python3 biobert/run_re.py --task_name="chemprot" --do_train=true --do_eval=true --do_predict=true --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --max_seq_length=128 --train_batch_size=32 --eval_batch_size=32 --predict_batch_size=32 --learning_rate=5e-4 --num_train_epochs=30.0 --do_lower_case=True --data_dir=gs://covidectrap/finetuning_data/chemprot --output_dir=gs://covidectrap/models/coviBERT/results/chemprot
+
+
+################################################# covidECTRA-Small ###################################################
+########## GAD ############
+python3 electra_small/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Small" --hparams '{"model_size": "small", "task_names": ["gad"], "num_train_epochs": 15.0, "train_batch_size": 32, "eval_batch_size": 8, "predict_batch_size": 8}'
+
+########### DDI ###########
+python3 electra_small/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Small" --hparams '{"model_size": "small", "task_names": ["ddi"]}'
+
+########## CHEMPROT #######
+python3 electra_small/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Small" --hparams '{"model_size": "small", "task_names": ["chemprot"]}'
+
+
+################################################# covidECTRA-Base ###################################################
+########## GAD ############
+python3 electra_base/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Base" --hparams '{"model_size": "base", "task_names": ["gad"], "num_train_epochs": 15.0, "train_batch_size": 32, "eval_batch_size": 8, "predict_batch_size": 8}'
+
+########### DDI ###########
+python3 electra_base/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Base" --hparams '{"model_size": "base", "task_names": ["ddi"]}'
+
+########## CHEMPROT #######
+python3 electra_base/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Base" --hparams '{"model_size": "base", "task_names": ["chemprot"]}'
+
+
+
+                     ##############################################################################
+                     ########################    Question Answering    ############################
+                     ##############################################################################
+
+############################################## coviBERT #################################################################
+
+#################################
+############ BioASQ 4b ##########
+python3 biobert/run_qa.py --do_train=True --do_predict=True --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --max_seq_length=384 --train_batch_size=12 --learning_rate=5e-5 --doc_stride=128 --num_train_epochs=5.0 --do_lower_case=True --train_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-train-factoid-4b.json --predict_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-test-factoid-4b-1.json --output_dir=gs://covidectrap/models/coviBERT/results/BIOASQ/4B
+
+python biobert/biocodes/transform_nbset2bioasqform.py --nbest_path=gs://covidectrap/models/coviBERT/results/BIOASQ/4B/nbest_predictions.json --output_path=gs://covidectrap/models/coviBERT/results/BIOASQ/4B
+
+java -Xmx10G -cp Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 gs://covidectrap/finetuning_data/BIOASQ/4B1_golden.json gs://covidectrap/models/coviBERT/results/BIOASQ/4B/BioASQform_BioASQ-answer.json
+
+
+#################################
+############ BioASQ 5b ##########
+python3 biobert/run_qa.py --do_train=True --do_predict=True --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --max_seq_length=384 --train_batch_size=12 --learning_rate=5e-5 --doc_stride=128 --num_train_epochs=5.0 --do_lower_case=True --train_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-train-factoid-5b.json --predict_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-test-factoid-5b-1.json --output_dir=gs://covidectrap/models/coviBERT/results/BIOASQ/5B
+
+python biobert/biocodes/transform_nbset2bioasqform.py --nbest_path=gs://covidectrap/models/coviBERT/results/BIOASQ/5B/nbest_predictions.json --output_path=gs://covidectrap/models/coviBERT/results/BIOASQ/5B
+
+java -Xmx10G -cp Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 gs://covidectrap/finetuning_data/BIOASQ/5B1_golden.json gs://covidectrap/models/coviBERT/results/BIOASQ/5B/BioASQform_BioASQ-answer.json
+
+
+#################################
+############ BioASQ 6b ##########
+python3 biobert/run_qa.py --do_train=True --do_predict=True --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/coviBERT/bert_config.json --init_checkpoint=gs://covidectrap/models/coviBERT/model.ckpt-1500000 --max_seq_length=384 --train_batch_size=12 --learning_rate=5e-5 --doc_stride=128 --num_train_epochs=5.0 --do_lower_case=True --train_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-train-factoid-6b.json --predict_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-test-factoid-6b-1.json --output_dir=gs://covidectrap/models/coviBERT/results/BIOASQ/6B
+
+python biobert/biocodes/transform_nbset2bioasqform.py --nbest_path=gs://covidectrap/models/coviBERT/results/BIOASQ/6B/nbest_predictions.json --output_path=gs://covidectrap/models/coviBERT/results/BIOASQ/6B
+
+java -Xmx10G -cp Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 gs://covidectrap/finetuning_data/BIOASQ/6B1_golden.json gs://covidectrap/models/coviBERT/results/BIOASQ/6B/BioASQform_BioASQ-answer.json
+
+
+
+############################################## covidECTRA-Small #########################################################
+
+#################################
+############ BioASQ 4b ##########
+python3 biobert/electra_run_qa.py --do_train=True --do_predict=True --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Small/electra_small_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Small/model.ckpt-1000000 --max_seq_length=384 --train_batch_size=12 --learning_rate=5e-5 --doc_stride=128 --num_train_epochs=5.0 --do_lower_case=True --train_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-train-factoid-4b.json --predict_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-test-factoid-4b-1.json --output_dir=gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/4B
+
+python biobert/biocodes/transform_nbset2bioasqform.py --nbest_path=gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/4B/nbest_predictions.json --output_path=gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/4B
+
+java -Xmx10G -cp Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 gs://covidectrap/finetuning_data/BIOASQ/4B1_golden.json gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/4B/BioASQform_BioASQ-answer.json
+
+
+#################################
+############ BioASQ 5b ##########
+python3 biobert/electra_run_qa.py --do_train=True --do_predict=True --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Small/electra_small_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Small/model.ckpt-1000000 --max_seq_length=384 --train_batch_size=12 --learning_rate=5e-5 --doc_stride=128 --num_train_epochs=5.0 --do_lower_case=True --train_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-train-factoid-5b.json --predict_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-test-factoid-5b-1.json --output_dir=gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/5B
+
+python biobert/biocodes/transform_nbset2bioasqform.py --nbest_path=gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/5B/nbest_predictions.json --output_path=gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/5B
+
+java -Xmx10G -cp Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 gs://covidectrap/finetuning_data/BIOASQ/5B1_golden.json gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/5B/BioASQform_BioASQ-answer.json
+
+
+#################################
+############ BioASQ 6b ##########
+python3 biobert/electra_run_qa.py --do_train=True --do_predict=True --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Small/electra_small_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Small/model.ckpt-1000000 --max_seq_length=384 --train_batch_size=12 --learning_rate=5e-5 --doc_stride=128 --num_train_epochs=5.0 --do_lower_case=True --train_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-train-factoid-6b.json --predict_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-test-factoid-6b-1.json --output_dir=gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/6B
+
+python biobert/biocodes/transform_nbset2bioasqform.py --nbest_path=gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/6B/nbest_predictions.json --output_path=gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/6B
+
+java -Xmx10G -cp Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 gs://covidectrap/finetuning_data/BIOASQ/6B1_golden.json gs://covidectrap/models/covidECTRA-Small/results/BIOASQ/6B/BioASQform_BioASQ-answer.json
+
+
+
+############################################## covidECTRA-Base #########################################################
+
+#################################
+############ BioASQ 4b ##########
+python3 biobert/electra_run_qa.py --do_train=True --do_predict=True --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Base/electra_base_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Base/model.ckpt-1000000 --max_seq_length=384 --train_batch_size=12 --learning_rate=5e-5 --doc_stride=128 --num_train_epochs=5.0 --do_lower_case=True --train_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-train-factoid-4b.json --predict_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-test-factoid-4b-1.json --output_dir=gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/4B
+
+python biobert/biocodes/transform_nbset2bioasqform.py --nbest_path=gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/4B/nbest_predictions.json --output_path=gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/4B
+
+java -Xmx10G -cp Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 gs://covidectrap/finetuning_data/BIOASQ/4B1_golden.json gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/4B/BioASQform_BioASQ-answer.json
+
+
+#################################
+############ BioASQ 5b ##########
+python3 biobert/electra_run_qa.py --do_train=True --do_predict=True --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Base/electra_base_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Base/model.ckpt-1000000 --max_seq_length=384 --train_batch_size=12 --learning_rate=5e-5 --doc_stride=128 --num_train_epochs=5.0 --do_lower_case=True --train_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-train-factoid-5b.json --predict_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-test-factoid-5b-1.json --output_dir=gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/5B
+
+python biobert/biocodes/transform_nbset2bioasqform.py --nbest_path=gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/5B/nbest_predictions.json --output_path=gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/5B
+
+java -Xmx10G -cp Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 gs://covidectrap/finetuning_data/BIOASQ/5B1_golden.json gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/5B/BioASQform_BioASQ-answer.json
+
+
+#################################
+############ BioASQ 6b ##########
+python3 biobert/electra_run_qa.py --do_train=True --do_predict=True --vocab_file=gs://covidectrap/vocab.txt --bert_config_file=gs://covidectrap/models/covidECTRA-Base/electra_base_config.json --init_checkpoint=gs://covidectrap/models/covidECTRA-Base/model.ckpt-1000000 --max_seq_length=384 --train_batch_size=12 --learning_rate=5e-5 --doc_stride=128 --num_train_epochs=5.0 --do_lower_case=True --train_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-train-factoid-6b.json --predict_file=gs://covidectrap/finetuning_data/BIOASQ/BioASQ-test-factoid-6b-1.json --output_dir=gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/6B
+
+python biobert/biocodes/transform_nbset2bioasqform.py --nbest_path=gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/6B/nbest_predictions.json --output_path=gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/6B
+
+java -Xmx10G -cp Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 gs://covidectrap/finetuning_data/BIOASQ/6B1_golden.json gs://covidectrap/models/covidECTRA-Base/results/BIOASQ/6B/BioASQform_BioASQ-answer.json
+
+
+
