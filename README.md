@@ -4,7 +4,15 @@ Pretrained ELECTRA model for biomedical and covid text understanding
 ## Introduction
 This is the implementation of covidECTRA (and coviBERT), a biomedical language understanding model pretrained mainly on [CORD-19](https://www.semanticscholar.org/cord19) metadata (abstracts only), and [PubMed](https://pubmed.ncbi.nlm.nih.gov/) abstracts using the recent self-supervised language model [ELECTRA](https://github.com/google-research/electra).
 
-### Some topics in the CORD-19 dataset:
+#### Some topics in the CORD-19 dataset literature:
+COVID-19
+![COVID-19](https://github.com/etetteh/covidECTRA/blob/main/CORD-19%20Topic%20Examples/coro.png)
+
+Common symptoms
+![Common symptoms](https://github.com/etetteh/covidECTRA/blob/main/CORD-19%20Topic%20Examples/coro_most_com_symptom.png)
+
+Prevention
+![Prevention](https://github.com/etetteh/covidECTRA/blob/main/CORD-19%20Topic%20Examples/coro_prev_mask.png)
 
 
 ## Requirement
