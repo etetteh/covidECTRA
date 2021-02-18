@@ -72,7 +72,7 @@ We pretrain three models (two small models and one base model), each on the WWM 
 
 
 ## Fine-tuning
-We fine-tune on three Named Entity Recognition (NER) datasets, and three Relation Extraction (RE) datasets. The NER datasets are BC5CDR-chemical, BC5CDR-disease and NCBI-disease, while the RE datasets are GAD, DDI, and Chemprot. For the NER fine-tuning, we adapted the code of [BioBERT](https://github.com/dmis-lab/biobert), while for the RE fine-tuning, we adapted the code of [ELECTRA](https://github.com/google-research/electra) for [sequence tagging](https://github.com/google-research/electra#finetune-electra-on-sequence-tagging). 
+We fine-tune on three Named Entity Recognition (NER) datasets, and three Relation Extraction (RE) datasets. The NER datasets are BC5CDR-chemical, BC5CDR-disease and NCBI-disease, while the RE datasets are GAD, DDI, and Chemprot. For the NER fine-tuning, we adapted the code of [BioBERT](https://github.com/dmis-lab/biobert), while for the RE fine-tuning, we adapted the code of [ELECTRA](https://github.com/google-research/electra) for [sequence classification](https://github.com/google-research/electra/tree/master/finetune/classification). 
 
 
 ### NER
