@@ -23,7 +23,7 @@ Prevention
 
 ## Pretraining
 ###
-We created a 50K custom WordPiece vocabulary file for all our implementation.
+We created a 50K uncased custom WordPiece vocabulary file for all our implementation.
 
 ### Create Whole-Word Masking (WWM) pretaining data
 The following code (adapted from [BERT](https://github.com/google-research/bert)) creates the whole-word masking pretraining data. The code below creates the data for the small-model. To create the data for the base-model, change the values of `max_seq_length` to 512, and `max_predictions_per_seq` to 79.  
@@ -105,3 +105,8 @@ python electra_small/run_finetuning.py --data-dir "gs://covidectrap" --model-nam
 ```
 
 ## Results
+
+## Acknowledgement
+
+A big thank you to the [BlueBERT](https://github.com/ncbi-nlp/bluebert) team for making their preprocessed data available. Another big thank you to the CORD-19 Dataset Research Team.
+Finally, a huge thank you to the Google TensorFlow Research Cloud (TFRC) team for supporting this work with Cloud TPUs.
