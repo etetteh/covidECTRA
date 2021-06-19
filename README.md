@@ -104,9 +104,32 @@ Example to fine-tune on DDI, run:
 python electra_small/run_finetuning.py --data-dir "gs://covidectrap" --model-name "covidECTRA-Small" --hparams '{"model_size": "small", "task_names": ["ddi"]}'
 ```
 
-## Results
+### Results
+#### Named Entity Recognition Results ( F1-score entity-level)
+| Model | BC5-Chemical | BC5-Disease | NCBI-Disease |
+| :---- | :----------: | :---------: | :----------: |
+|BioBERT      | 93.41 | 85.31 | 89.47 |
+|SciBERT      | 93.12 | 85.34 | 88.61 |
+|ClinicalBERT | 91.51 | 84.18 | 87.31 |
+|BlueBERT     | 91.98 | 84.63 | 89.20 |
+|PubMedBERT   | 94.06 | 86.63 | 88.81 |
+|**coviBERT-Baseline(ours)** | 88.69 | 79.63 | 81.05 |
+|**covidECTRA-Small(ours)** | 88.10 | 78.46 | 78.28 |
+|**covidECTRA-Base(ours)** | 91.95 | 81.18 | 85.18 |
+
+#### Relation Extraction Results (F1-score)
+| Model | GAD   | DDI   | ChemProt | 
+| :---- | :---: | :---: | :------: |
+|BioBERT      | 80.94 | 80.88 | 76.14 | 
+|SciBERT      | 80.90 | 81.06 | 75.24 | 
+|ClinicalBERT | 78.40 | 78.20 | 72.04 | 
+|BlueBERT     | 77.24 | 77.78 | 71.46 | 
+|PubMedBERT   | 82.34 | 82.36 | 77.24 |
+|**coviBERT-Baseline(ours)** | 76.99 | 83.90 | 79.53 |
+|**covidECTRA-Small(ours)**  | 79.01 | 85.69 | 81.09 |
+|**covidECTRA-Base(ours)**   | 80.60 | 86.65 | 83.15 |
 
 ## Acknowledgement
 
 A big thank you to the [BlueBERT](https://github.com/ncbi-nlp/bluebert) team for making their preprocessed data available. Another big thank you to the CORD-19 Dataset Research Team.
-Finally, a huge thank you to the Google TensorFlow Research Cloud (TFRC) team for supporting this work with Cloud TPUs.
+Finally, a huge thank you to the [Google TensorFlow Research Cloud (TFRC)](https://sites.research.google/trc/) team for supporting this work with Cloud TPUs.
